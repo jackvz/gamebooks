@@ -1,0 +1,37 @@
+			<div class="row">
+
+				<div class="hide-for-small large-6 columns">
+					<img src="https://www.projectaon.org/en/xhtml/lw/02fotw/small3.png" class="player-icon" alt="Player icon">
+				</div>
+
+				<div class="player-summary small-12 large-6 columns">
+
+					<ul id="player-<%= id %>" class="pricing-table">
+						<li class="title"><h2><%=name %></h2></li>
+						<li class="price"><h6><%=rank %></h6></li>
+						<li class="bullet-item">
+							<div class="show-for-small"><img src="https://www.projectaon.org/en/xhtml/lw/02fotw/small3.png" alt="Player icon"></div>
+							<h5><%=bookTitle %></h5>
+						</li>
+						<li class="description"><%=bookBlurb %></li>
+						<li class="cta-button">
+							<a href="#game/<%= id %>" class="radius button">Continue game</a> &nbsp; <a href="#" class="delete-player-button small secondary radius button" data-reveal-id="delete-player-<%= id %>-modal">Delete</a>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<!-- Delete Player Modal -->
+			<div id="delete-player-<%= id %>-modal" class="medium reveal-modal">
+
+				<h3>Delete player <%= name %>?</h3>
+				<p>Are you sure you want to delete this player?</p>
+				<a href="#" class="radius small button delete-player" data-player-id="<%= id %>">Delete</a>
+				<a href="#" class="radius small secondary button cancel" data-player-id="<%= id %>">Cancel</a>
+
+				<a class="close-reveal-modal">&#215;</a>
+
+			</div>
+			<!-- End Delete Player Modal -->

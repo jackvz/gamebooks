@@ -1,0 +1,121 @@
+	<!-- Main Content -->
+	<div class="row">
+		<div class="small-12 columns">
+			<form id="new-player" class="custom">
+
+				<div class="row">
+					<div class="small-12 large-7 columns">
+						<h2>Start a new game</h2>
+
+						<fieldset>
+							<legend>Create a new player</legend>
+
+							<div class="row">
+								<div class="small-12 large-7 columns">
+									<label for="player-name">Name</label>
+									<input id="player-name" type="text" placeholder="Player name">
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 large-7 columns">
+									<label for="adventure-title">Adventure</label>
+									<select id="adventure-title">
+										<% if (books.findWhere({ number: 1 })) { %>
+										<option value="1"><%= books.findWhere({ number: 1 }).get('title') %></option>
+										<% } %>
+										<% if (books.findWhere({ number: 2 })) { %>
+										<option value="2"><%= books.findWhere({ number: 2 }).get('title') %></option>
+										<% } %>
+										<% if (books.findWhere({ number: 3 })) { %>
+										<option value="3"><%= books.findWhere({ number: 3 }).get('title') %></option>
+										<% } %>
+										<% if (books.findWhere({ number: 4 })) { %>
+										<option value="4"><%= books.findWhere({ number: 4 }).get('title') %></option>
+										<% } %>
+										<% if (books.findWhere({ number: 5 })) { %>
+										<option value="5"><%= books.findWhere({ number: 5 }).get('title') %></option>
+										<% } %>
+									</select><br>
+									<br>
+								</div>
+							</div>
+							<div class="row">
+								<div id="book1-blurb" class="book-blurb small-12 columns">
+								<% if (books.findWhere({ number: 1 })) { %>
+								<%= books.findWhere({ number: 1 }).get('blurb') %>
+								<% } %>
+								</div>
+								<div id="book2-blurb" class="book-blurb small-12 columns">
+								<% if (books.findWhere({ number: 2 })) { %>
+								<%= books.findWhere({ number: 2 }).get('blurb') %>
+								<% } %>
+								</div>
+								<div id="book3-blurb" class="book-blurb small-12 columns">
+								<% if (books.findWhere({ number: 3 })) { %>
+								<%= books.findWhere({ number: 3 }).get('blurb') %>
+								<% } %>
+								</div>
+								<div id="book4-blurb" class="book-blurb small-12 columns">
+								<% if (books.findWhere({ number: 4 })) { %>
+								<%= books.findWhere({ number: 4 }).get('blurb') %>
+								<% } %>
+								</div>
+								<div id="book5-blurb" class="book-blurb small-12 columns">
+								<% if (books.findWhere({ number: 5 })) { %>
+								<%= books.findWhere({ number: 5 }).get('blurb') %>
+								<% } %>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 columns">
+									<a href="#" id="create-player" class="radius button">Start game</a>
+									<% if (collection.length > 0) { %>
+									&nbsp;
+									<a href="#" class="small secondary radius button">Cancel</a>
+									<% } %>
+								</div>
+							</div>
+						</fieldset>
+
+					</div>
+					<div class="hide-for-small large-5 columns">
+						<% if (books.findWhere({ number: 1 })) { %>
+						<img id="book1-illustration" class="book-illustration" src="<%= books.findWhere({ number: 1 }).get('showcaseIllustration') %>" alt="Book showcase illustration">
+						<% } %>
+						<% if (books.findWhere({ number: 2 })) { %>
+						<img id="book2-illustration" class="book-illustration" src="<%= books.findWhere({ number: 2 }).get('showcaseIllustration') %>" alt="Book showcase illustration">
+						<% } %>
+						<% if (books.findWhere({ number: 3 })) { %>
+						<img id="book3-illustration" class="book-illustration" src="<%= books.findWhere({ number: 3 }).get('showcaseIllustration') %>" alt="Book showcase illustration">
+						<% } %>
+						<% if (books.findWhere({ number: 4 })) { %>
+						<img id="book4-illustration" class="book-illustration" src="<%= books.findWhere({ number: 4 }).get('showcaseIllustration') %>" alt="Book showcase illustration">
+						<% } %>
+						<% if (books.findWhere({ number: 5 })) { %>
+						<img id="book5-illustration" class="book-illustration" src="<%= books.findWhere({ number: 5 }).get('showcaseIllustration') %>" alt="Book showcase illustration">
+						<% } %>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div id="loading-anim" class="small-6 small-offset-6 columns">
+			<p><img src="https://www.projectaon.org/en/xhtml/lw/06tkot/small4.png" alt=""></p>
+		</div>
+	</div>
+	<!-- End Main Content -->
+
+	<!-- Player Invalid Modal -->
+	<div id="player-invalid-modal" class="medium reveal-modal">
+
+		<h3>New game</h3>
+		<div id="player-errors"></div>
+
+		<a class="close-reveal-modal">&#215;</a>
+
+	</div>
+	<!-- End Player Invalid Modal -->

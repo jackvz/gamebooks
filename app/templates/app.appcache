@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# rev 0.5
+CACHE:
+{% for file in app_files %}{{ file }}{% endfor %}
+{% for file in appmod_files %}{{ file }}{% endfor %}
+{% for file in ui_files %}{{ file }}{% endfor %}
+{% for file in title1_files %}{{ file }}{% endfor %}
+{% for file in title2_files %}{{ file }}{% endfor %}
+{% for file in title3_files %}{{ file }}{% endfor %}
+{% for file in title4_files %}{{ file }}{% endfor %}
+{% for file in title5_files %}{{ file }}{% endfor %}
+NETWORK:
+*

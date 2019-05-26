@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html manifest="/app.appcache" class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<title>Lone Wolf</title>
+	<meta name="description" content="A web app featuring the 1980s Lone Wolf gamebooks. The app keeps track of players' progress, and saves their statistics and items as they read through the choose-your-own-adventure titles. Playable on the desktop and handheld devices. Offline support for playing on-the-go.">
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	<link rel="apple-touch-icon" sizes="144x144" href="/touch-icon-144x144-precomposed.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/touch-icon-114x114-precomposed.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="/touch-icon-72x72-precomposed.png" />
+	<link rel="apple-touch-icon" href="/img/touch-icon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144x144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/touch-icon-precomposed.png">
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/foundation.min.css" />
+	<link rel="stylesheet" href="css/app.css?0.3" />
+	<script src="js/lib/custom.modernizr.js"></script>
+</head>
+<body>
+
+	<!-- Header: The header at the top of the page.
+	Medium and widescreen displays: Always hidden behind the fixed nav, but required for padding or the fixed nav will cover the content.
+	Small displays: Not shown and taking up no space as the nav will not be fixed. -->
+	<div id="header">
+		<div class="row">
+			<div class="small-12 columns">
+				<h1 class="left"><a href="/#home">Lone Wolf <br class="show-for-small">Adventures</a></h1>
+				<div id="user-nav-placeholder" class="right">
+					<div id="user-nav-paceholder-wrapper">
+						<h4><a href="#" class="small radius button">&nbsp;</a></h4><br>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<hr id="header-ruler" />
+			</div>
+		</div>
+	</div>
+	<!-- End Header -->
+
+	<!-- Nav-->
+	<div id="gameoptions">
+		<div class="row">
+			<div class="small-12 columns">
+				<h1 class="left"><a href="/#home">Lone Wolf <br class="show-for-small">Adventures</a></h1>
+				<div id="user-nav-placeholder" class="right">
+					<div id="user-nav-paceholder-wrapper">
+						<h4><a href="#" class="small radius button">&nbsp;</a></h4><br>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<hr id="header-ruler" />
+			</div>
+		</div>
+	</div>
+	<!-- End Nav -->
+
+	<div id="main-content">
+		<div class="row">
+			<div class="small-12 columns">
+				<h2>Loading...</h2>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="row">
+		<div class="small-12 columns">
+			<hr />
+		</div>
+		<div id="status-check" class="small-12 large-3 columns right"></div>
+		<div id="copyright" class="small-12 large-9 columns left"></div>
+	</footer>
+	<!-- End Footer -->
+
+	<!-- Visibility Elements -->
+	<div id="on-small-screen" class="show-for-small"></div>
+	<div id="on-medium-screen" class="show-for-medium"></div>
+	<div id="on-large-screen" class="show-for-large"></div>
+	<div id="on-xlarge-screen" class="show-for-xlarge"></div>
+	<!-- End Visibility Elements -->
+
+	<script> var require = { urlArgs : '0.3' }; </script>
+	<script data-main="/js/app" src="/js/lib/require.js"></script>
+</body>
+</html>

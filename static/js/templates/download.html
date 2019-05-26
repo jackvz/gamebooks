@@ -1,0 +1,58 @@
+	<!-- Main Content -->
+	<div class="row">
+		<div class="small-12 large-10 large-offset-1 columns">
+			<h2>Download</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 large-10 large-offset-1 columns">
+			<% if (verbose) { %>
+			<ul>
+				<% _.each(status, function(cacheStatus){ %>
+				<li><%= _.escape(cacheStatus) %></li>
+				<% }); %>
+			</ul>
+			<% } else if (status.length > 0) { %>
+			<p><%= status.pop() %></p>
+			<% } else if (completed) { %>
+			<p>All resources for this app have now been downloaded.</p>
+			<% } else { %>
+			<p>Downloading text and images for offline play. Please wait...</p>
+			<% } %>
+		</div>
+	</div>
+
+	<div class="row">
+		<% if (filesDownloaded != 0 && totalFiles != 0) { %>
+		<div class="small-12 large-8 large-offset-2 columns">
+			<div class="progress secondary round"><span class="meter" style="width: <%= (filesDownloaded * 100 / totalFiles) %>%"></span></div>
+			<p><%- filesDownloaded %> out of <%- totalFiles %> resources downloaded</p>
+		</div>
+		<% } %>
+	</div>
+
+	<% if (completed || filesDownloaded == 0 || filesDownloaded == totalFiles) { %>
+	<div class="row">
+		<div class="small-12 large-10 large-offset-1 columns">
+			<a id="continue" href="#" class="radius button right">Continue</a>
+		</div>
+	</div>
+	<% } else { %>
+	<div class="row">
+		<div class="small-12 large-10 large-offset-1 columns">
+			<a id="continue" href="#" class="radius button right">Download later</a>
+		</div>
+	</div>
+	<% } %>
+	<div class="row">
+		<div class="small-12 large-10 large-offset-1 columns">
+			<a id="retry" href="#retry" class="radius button right">Retry download</a>
+		</div>
+	</div>
+
+	<!-- Trigger caching by adding an iframe that points to an empty page containing the cache manifest. The cache manifest will be different if the user has agreed to the terms as this is passed as a cookie value with the request that gets the cache manifest. -->
+	<!-- Don't do this. It creates an endless loop in Safari -->
+	<!-- <iframe src="triggercache" width="0" height="0"> -->
+
+	<!-- End Main Content -->

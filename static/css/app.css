@@ -1,0 +1,753 @@
+@font-face {
+	font-family: 'im_fell_great_primer_proRg';
+	src: url('/fonts/imfegprm29c-webfont.eot');
+	src: url('/fonts/imfegprm29c-webfont.eot?#iefix') format('embedded-opentype'),
+	url('/fonts/imfegprm29c-webfont.woff') format('woff'),
+	url('/fonts/imfegprm29c-webfont.ttf') format('truetype'),
+	url('/fonts/imfegprm29c-webfont.svg#im_fell_great_primer_proRg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GeneralFoundicons';
+	src: url('/fonts/general_foundicons.eot');
+	src: url('/fonts/general_foundicons.eot?#iefix') format('embedded-opentype'),
+	url('/fonts/general_foundicons.woff') format('woff'),
+	url('/fonts/general_foundicons.ttf') format('truetype'),
+	url('/fonts/general_foundicons.svg#generalFoundicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GeneralEnclosedFoundicons';
+	src: url('/fonts/general_enclosed_foundicons.eot');
+	src: url('/fonts/general_enclosed_foundicons.eot?#iefix') format('embedded-opentype'),
+	url('/fonts/general_enclosed_foundicons.woff') format('woff'),
+	url('/fonts/general_enclosed_foundicons.ttf') format('truetype'),
+	url('/fonts/general_enclosed_foundicons.svg#generalFoundicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class*="foundicon-"] {
+	display: inline;
+	width: auto;
+	height: auto;
+	line-height: inherit;
+	vertical-align: baseline;
+	background-image: none;
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+
+[class*="foundicon-"]:before {
+	font-family: "GeneralFoundicons";
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: inherit;
+}
+
+[class*="enclosedfoundicon-"]:before {
+	font-family: "GeneralEnclosedFoundicons";
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: inherit;
+}
+
+body { 
+	font-family: georgia, times, serif;
+	background: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, fieldset legend, .button {
+	font-family: 'im_fell_great_primer_proRg';
+	font-weight: normal;
+}
+
+a {
+	border-bottom: 1px solid #ddd;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, a#title {
+	border-bottom: none;
+}
+
+ul {
+	list-style-position: inside;
+}
+
+.reveal-modal {
+	z-index: 200;
+}
+.reveal-modal-bg {
+	z-index: 150;
+}
+#license-modal ul li {
+	list-style: none;
+}
+
+/* The header at the top of the page.
+Small displays: Not shown and taking up no space as the nav will not be fixed. 
+Medium and up displays: Always hidden behind the fixed nav, but required for padding or the fixed nav will cover the content. */
+#header {
+	speak: none;
+	display: none;
+	z-index: 50;
+}
+/* Tweak the fixed header display for medium and up displays */
+@media only screen and (min-width: 768px) {
+	#header {
+		display: block;
+	}
+}
+
+/* The game nav. 
+Medium and up displays: Fixed at the top of the viewport. */
+#gameoptions {
+	width: 100%;
+	background-color: #fff;
+	z-index: 100;
+}
+@media only screen and (min-width: 768px) {
+	#gameoptions {
+		position: fixed; 
+		top: 0; 
+	}
+}
+
+.gameoptions {
+	display: none;
+}
+/* Tweak the game options heading position for medium and up displays */
+@media only screen and (min-width: 768px) {
+	.gameoptions h6 {
+		text-align: center;
+	}
+}
+#gameoptions h5 {
+	white-space: nowrap;
+}
+
+#user-nav, #user-nav-placeholder {
+	margin-top: .5em;
+	margin-left: 1em;
+}
+
+/* Tweak the game menu button position for medium and up displays */
+@media only screen and (min-width: 768px) {
+	#user-nav, #user-nav-placeholder {
+		margin-top: 1em;
+	}
+}
+
+/* The placeholder is only there to keep the menu without a game button's layout consistent with the menu with a game button */
+#user-nav-placeholder {
+	visibility: hidden;
+	speak: none;
+}
+
+#home-content img {
+	margin-top: 2%;
+}
+
+.player-summary img {
+	padding-bottom: 1em;
+}
+/* Tweak the player selection icon for medium displays */
+.player-icon-holder {
+	overflow: hidden;
+}
+@media only screen and (min-width: 768px) {
+	img.player-icon {
+		margin-left: -20%;
+	}
+	.player-summary .pricing-table {
+		margin-left: -40%;
+	}
+}
+
+.player-summary .pricing-table * {
+	line-height: 1.6;
+}
+
+#header-ruler {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#main-content {
+	padding-top: 2em;
+}
+
+#loading-anim {
+	padding-top: 2em;
+	padding-bottom: 5em;
+}
+
+/* Animate the loading icon */
+@keyframes animate-loading-icon 
+{
+	from { margin-left: 50%; }
+	to { margin-left: 0%; }
+}
+@-webkit-keyframes animate-loading-icon 
+{
+	from { margin-left: 50%; }
+	to { margin-left: 0%; }
+}
+@-moz-keyframes animate-loading-icon 
+{
+	from { margin-left: 50%; }
+	to { margin-left: 0%; }
+}
+@-o-keyframes animate-loading-icon 
+{
+	from { margin-left: 50%; }
+	to { margin-left: 0%; }
+}
+
+#loading-anim {
+	animation: animate-loading-icon 5s linear 0s infinite alternate;
+	-webkit-animation: animate-loading-icon 5s linear 0s infinite alternate;
+	-moz-animation: animate-loading-icon 5s linear 0s infinite alternate;
+	-o-animation: animate-loading-icon 5s linear 0s infinite alternate;
+}
+
+#story, #action-chart, #random-number, #combat-results, #map {
+	display: none;
+}
+
+#story table thead tr th, 
+#story table thead tr td, 
+#story table tbody tr th, 
+#story table tbody tr td, 
+#story table tfoot tr th, 
+#story table tfoot tr td {
+	text-align: center;
+}
+
+#story .illustration { 
+	text-align: center;
+	padding: 0.5em 0 1.5em 0;
+}
+/* Add a pointer to story illustrations on medium and up displays */
+@media only screen and (min-width: 768px) {
+	#story .illustration.ill {
+		cursor: pointer;
+	}
+}
+#story .illustration-label {
+	text-align: center;
+	font-size: 80%;
+}
+#story-illustration {
+	display: none;
+	text-align: center;
+}
+
+#story .fight-round {
+	text-align: center;
+}
+
+#story table.combat-round thead tr th.alert-box { 
+	margin-bottom: 0;
+}
+
+#statistics label {
+	white-space: nowrap;
+}
+
+.tooltip {
+	font-weight: normal;
+}
+
+#random-number table tbody td.active {
+	background-color: #333;
+	border-color: #1a1a1a;
+	color: #fff;
+}
+
+.combat-record thead th {
+	white-space: nowrap;
+}
+
+.combat-ratio-header {
+	text-align: center;
+}
+
+.combat-ratio-headers th {
+	white-space: nowrap;
+	text-align: center;
+}
+
+.random-number-header {
+	position: relative;
+}
+.random-number-header span {
+	width: 1em;
+	display: block;
+	position: absolute;
+	top: 60%;
+	white-space: nowrap;
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+/* http://blog.keithclark.co.uk/moving-ie-specific-css-into-media-blocks/ */
+/* IE fix */
+@media screen and (min-width:0\0) { 
+	.random-number-header span {
+		top: 10em;
+	}
+}
+
+#combat-results tr th {
+	background: whitesmoke;
+}
+
+#combat-results tbody tr td, 
+#random-number tbody tr td {
+	white-space: nowrap;
+	text-align: center;
+	border: solid 1px #dddddd;
+}
+
+#combat-results table tr th, 
+#combat-results table tr td {
+	padding: 0.25em 0.25em;
+	font-size: 0.7em;
+}
+#combat-results table tr th.combat-ratio-header {
+	padding: 0.5em 0.25em;
+}
+#combat-results table tr th.random-number-header {
+	padding: 0.25em 1em 0.25em 0.5em;
+}
+/* Tweak the combat results table for medium displays */
+@media only screen and (min-width: 768px) {
+	#combat-results table tr th, 
+	#combat-results table tr td {
+		font-size: 0.875em;
+	}
+}
+
+.header-tooltip {
+	font-size: 0.4em;
+	position: relative;
+	top: -0.5em;
+}
+
+/* Override Foundation bottom border */
+.has-tip, .has-tip:hover, .has-tip:focus {
+	border: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+}
+
+/* Full-size and scaled map view settings */
+#map-toggle {
+	margin-top: 1em;
+}
+#map-holder.toggle-map-holder {
+	overflow: scroll;
+}
+#map-image.toggle-map-image {
+	width: 1024px;
+	max-width: none;
+	padding-right: 0.9375em;
+}
+
+footer p {
+	font-size: 80%;
+}
+
+footer #status-check {
+	text-align: right;
+}
+
+/* icons */
+
+.foundicon-settings:before {
+	content: "\f000";
+}
+
+.foundicon-heart:before {
+	content: "\f001";
+}
+
+.foundicon-star:before {
+	content: "\f002";
+}
+
+.foundicon-plus:before {
+	content: "\f003";
+}
+
+.foundicon-minus:before {
+	content: "\f004";
+}
+
+.foundicon-checkmark:before {
+	content: "\f005";
+}
+
+.foundicon-remove:before {
+	content: "\f006";
+}
+
+.foundicon-mail:before {
+	content: "\f007";
+}
+
+.foundicon-calendar:before {
+	content: "\f008";
+}
+
+.foundicon-page:before {
+	content: "\f009";
+}
+
+.foundicon-tools:before {
+	content: "\f00a";
+}
+
+.foundicon-globe:before {
+	content: "\f00b";
+}
+
+.foundicon-home:before {
+	content: "\f00c";
+}
+
+.foundicon-quote:before {
+	content: "\f00d";
+}
+
+.foundicon-people:before {
+	content: "\f00e";
+}
+
+.foundicon-monitor:before {
+	content: "\f00f";
+}
+
+.foundicon-laptop:before {
+	content: "\f010";
+}
+
+.foundicon-phone:before {
+	content: "\f011";
+}
+
+.foundicon-cloud:before {
+	content: "\f012";
+}
+
+.foundicon-error:before {
+	content: "\f013";
+}
+
+.foundicon-right-arrow:before {
+	content: "\f014";
+}
+
+.foundicon-left-arrow:before {
+	content: "\f015";
+}
+
+.foundicon-up-arrow:before {
+	content: "\f016";
+}
+
+.foundicon-down-arrow:before {
+	content: "\f017";
+}
+
+.foundicon-trash:before {
+	content: "\f018";
+}
+
+.foundicon-add-doc:before {
+	content: "\f019";
+}
+
+.foundicon-edit:before {
+	content: "\f01a";
+}
+
+.foundicon-lock:before {
+	content: "\f01b";
+}
+
+.foundicon-unlock:before {
+	content: "\f01c";
+}
+
+.foundicon-refresh:before {
+	content: "\f01d";
+}
+
+.foundicon-paper-clip:before {
+	content: "\f01e";
+}
+
+.foundicon-video:before {
+	content: "\f01f";
+}
+
+.foundicon-photo:before {
+	content: "\f020";
+}
+
+.foundicon-graph:before {
+	content: "\f021";
+}
+
+.foundicon-idea:before {
+	content: "\f022";
+}
+
+.foundicon-mic:before {
+	content: "\f023";
+}
+
+.foundicon-cart:before {
+	content: "\f024";
+}
+
+.foundicon-address-book:before {
+	content: "\f025";
+}
+
+.foundicon-compass:before {
+	content: "\f026";
+}
+
+.foundicon-flag:before {
+	content: "\f027";
+}
+
+.foundicon-location:before {
+	content: "\f028";
+}
+
+.foundicon-clock:before {
+	content: "\f029";
+}
+
+.foundicon-folder:before {
+	content: "\f02a";
+}
+
+.foundicon-inbox:before {
+	content: "\f02b";
+}
+
+.foundicon-website:before {
+	content: "\f02c";
+}
+
+.foundicon-smiley:before {
+	content: "\f02d";
+}
+
+.foundicon-search:before {
+	content: "\f02e";
+}
+
+.enclosedfoundicon-settings:before {
+	content: "\f000";
+}
+
+.enclosedfoundicon-heart:before {
+	content: "\f001";
+}
+
+.enclosedfoundicon-star:before {
+	content: "\f002";
+}
+
+.enclosedfoundicon-plus:before {
+	content: "\f003";
+}
+
+.enclosedfoundicon-minus:before {
+	content: "\f004";
+}
+
+.enclosedfoundicon-checkmark:before {
+	content: "\f005";
+}
+
+.enclosedfoundicon-remove:before {
+	content: "\f006";
+}
+
+.enclosedfoundicon-mail:before {
+	content: "\f007";
+}
+
+.enclosedfoundicon-calendar:before {
+	content: "\f008";
+}
+
+.enclosedfoundicon-page:before {
+	content: "\f009";
+}
+
+.enclosedfoundicon-tools:before {
+	content: "\f00a";
+}
+
+.enclosedfoundicon-globe:before {
+	content: "\f00b";
+}
+
+.enclosedfoundicon-home:before {
+	content: "\f00c";
+}
+
+.enclosedfoundicon-quote:before {
+	content: "\f00d";
+}
+
+.enclosedfoundicon-people:before {
+	content: "\f00e";
+}
+
+.enclosedfoundicon-monitor:before {
+	content: "\f00f";
+}
+
+.enclosedfoundicon-laptop:before {
+	content: "\f010";
+}
+
+.enclosedfoundicon-phone:before {
+	content: "\f011";
+}
+
+.enclosedfoundicon-cloud:before {
+	content: "\f012";
+}
+
+.enclosedfoundicon-error:before {
+	content: "\f013";
+}
+
+.enclosedfoundicon-right-arrow:before {
+	content: "\f014";
+}
+
+.enclosedfoundicon-left-arrow:before {
+	content: "\f015";
+}
+
+.enclosedfoundicon-up-arrow:before {
+	content: "\f016";
+}
+
+.enclosedfoundicon-down-arrow:before {
+	content: "\f017";
+}
+
+.enclosedfoundicon-trash:before {
+	content: "\f018";
+}
+
+.enclosedfoundicon-add-doc:before {
+	content: "\f019";
+}
+
+.enclosedfoundicon-edit:before {
+	content: "\f01a";
+}
+
+.enclosedfoundicon-lock:before {
+	content: "\f01b";
+}
+
+.enclosedfoundicon-unlock:before {
+	content: "\f01c";
+}
+
+.enclosedfoundicon-refresh:before {
+	content: "\f01d";
+}
+
+.enclosedfoundicon-paper-clip:before {
+	content: "\f01e";
+}
+
+.enclosedfoundicon-video:before {
+	content: "\f01f";
+}
+
+.enclosedfoundicon-photo:before {
+	content: "\f020";
+}
+
+.enclosedfoundicon-graph:before {
+	content: "\f021";
+}
+
+.enclosedfoundicon-idea:before {
+	content: "\f022";
+}
+
+.enclosedfoundicon-mic:before {
+	content: "\f023";
+}
+
+.enclosedfoundicon-cart:before {
+	content: "\f024";
+}
+
+.enclosedfoundicon-address-book:before {
+	content: "\f025";
+}
+
+.enclosedfoundicon-compass:before {
+	content: "\f026";
+}
+
+.enclosedfoundicon-flag:before {
+	content: "\f027";
+}
+
+.enclosedfoundicon-location:before {
+	content: "\f028";
+}
+
+.enclosedfoundicon-clock:before {
+	content: "\f029";
+}
+
+.enclosedfoundicon-folder:before {
+	content: "\f02a";
+}
+
+.enclosedfoundicon-inbox:before {
+	content: "\f02b";
+}
+
+.enclosedfoundicon-website:before {
+	content: "\f02c";
+}
+
+.enclosedfoundicon-smiley:before {
+	content: "\f02d";
+}
+
+.enclosedfoundicon-search:before {
+	content: "\f02e";
+}
+
+/* Foundation fix for hiding tr elements for medium and up displays */
+@media only screen and (min-width: 768px) {
+	tr.show-for-small {
+		display: none !important;
+	}
+}
