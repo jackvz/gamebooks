@@ -1,0 +1,141 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+// Reset Ionic global styles, so that Foundation works as expected
+
+html {
+	font-size: inherit;
+}
+
+body {
+	font-family: inherit;
+}
+
+// Reset Foundation global styles
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	font-family: inherit;
+}
+
+// Global styles
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	font-family: 'pt_serifregular';
+}
+
+form {
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    padding-top: 1.6rem;
+  }
+  & > div:first-child h6 {
+    padding-top: 0;
+  }
+
+  th {
+    font-weight: normal;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+.pa-header {
+	h1, h6 {
+		font-family: 'pt_serifregular';
+		margin-top: -0.3rem;
+	}
+  h1 {
+    margin-bottom: 0;
+  }
+
+  img {
+    width: 80px;
+  }
+}
+
+/* iPhone XR padding at the top */
+@media only screen
+  and (device-width: 414px)
+  and (device-height: 896px)
+  and (-webkit-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .pa-header {
+    padding-top: 3rem;
+  }
+}
+
+.progress-bar {
+  padding: 5rem 0 5rem 0;
+}
+
+footer {
+  padding-bottom: 1.5rem;
+}
+
+// Lone Wolf series styles
+
+.series-1,
+.series-2,
+.series-3,
+.series-4 {
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
+  .game-menu,
+  button, .button {
+    font-family: 'im_fell_great_primer';
+  }
+
+  .accordion-title {
+    background-color: #ccc;
+  }
+}
+
+// Grey Star series styles
+
+.series-5 {
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
+  .game-menu,
+  button, .button {
+    font-family: 'pt_serifregular';
+  }
+
+  .accordion-title {
+    background-color: #eee;
+  }
+}
+
+// Freeway Warrior series styles
+
+.series-6 {
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
+  .game-menu,
+  button, .button {
+    font-family: 'underwood_championregular';
+  }
+
+  .accordion-title {
+    background-color: #aaa;
+  }
+}
+
+// Saved Games
+.saved-games {
+  .accordion-title {
+    background-color: #ddd;
+  }
+}

@@ -1,0 +1,10 @@
+page-map {
+  .map-original {
+    div[align="center"] {
+      overflow: scroll;
+      img {
+        max-width: none;
+      }
+    }
+  }
+}

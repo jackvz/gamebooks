@@ -1,0 +1,7 @@
+{
+  "name": "game-books",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
