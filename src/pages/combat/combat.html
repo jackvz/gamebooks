@@ -1,0 +1,74 @@
+<div class="grid-container series-{{series?.id}}">
+  <title-header [series]=this.series [title]=this.title class="grid-x grid-padding-x pa-header"></title-header>
+
+  <game-menu selected="combat"></game-menu>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-10 medium-offset-1 cell">
+      <div [innerHTML]="combatResultsMarkedUpContent"></div>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-10 medium-offset-1 cell">
+      <div [innerHTML]="combatRulesMarkedUpContent"></div>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-10 medium-offset-1 cell">
+      <form>
+        <h2>Combat Record</h2>
+        <div class="grid-x grid-padding-x">
+          <table>
+            <!-- <thead>
+              <tr>
+                <th width="40%">Your <br class="show-for-small">EP</th>
+                <th width="20%">Combat <br class="show-for-small">Ratio</th>
+                <th width="40%">Enemy <br class="show-for-small">EP</th>
+              </tr>
+            </thead> -->
+            <tbody>
+              <tr>
+                <td><input type="text" placeholder="Your EP"></td>
+                <td><input type="text" placeholder="Combat Ratio"></td>
+                <td><input type="text" placeholder="Enemy EP"></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Your EP"></td>
+                <td><input type="text" placeholder="Combat Ratio"></td>
+                <td><input type="text" placeholder="Enemy EP"></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Your EP"></td>
+                <td><input type="text" placeholder="Combat Ratio"></td>
+                <td><input type="text" placeholder="Enemy EP"></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Your EP"></td>
+                <td><input type="text" placeholder="Combat Ratio"></td>
+                <td><input type="text" placeholder="Enemy EP"></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Your EP"></td>
+                <td><input type="text" placeholder="Combat Ratio"></td>
+                <td><input type="text" placeholder="Enemy EP"></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Your EP"></td>
+                <td><input type="text" placeholder="Combat Ratio"></td>
+                <td><input type="text" placeholder="Enemy EP"></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Your EP"></td>
+                <td><input type="text" placeholder="Combat Ratio"></td>
+                <td><input type="text" placeholder="Enemy EP"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

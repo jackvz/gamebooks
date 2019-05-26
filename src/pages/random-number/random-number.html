@@ -1,0 +1,11 @@
+<div class="grid-container series-{{series?.id}}">
+  <title-header [series]=this.series [title]=this.title class="grid-x grid-padding-x pa-header"></title-header>
+
+  <game-menu selected="random-number"></game-menu>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-10 medium-offset-1 cell">
+      <div [innerHTML]="pageMarkedUpContent"></div>
+    </div>
+  </div>
+</div>
