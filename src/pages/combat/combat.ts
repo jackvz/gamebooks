@@ -10,6 +10,9 @@ import { Title } from '../../app/title';
 import { GameService } from '../../app/game.service';
 import { TitleService } from '../../app/title.service';
 
+// Global vars
+declare var gtag: any;
+
 @Component({
   selector: 'page-combat',
   templateUrl: 'combat.html',
@@ -24,7 +27,7 @@ export class CombatPage {
     private router: Router,
     private gameService: GameService,
     private titleService: TitleService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {
   }
 
@@ -68,6 +71,8 @@ export class CombatPage {
       }).catch(() => {
         this.router.navigateByUrl('/home');
       });
+
+    <any>gtag('View', 'Combat', { 'event_label' : this.series.name + ' - ' + this.title.name });
   }
 
   ngAfterViewInit() {

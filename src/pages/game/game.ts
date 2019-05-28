@@ -11,6 +11,9 @@ import { GameService } from '../../app/game.service';
 import { TitleService } from '../../app/title.service';
 import { Choice } from '../../app/choice';
 
+// Global vars
+declare var gtag: any;
+
 @Component({
   selector: 'page-game',
   templateUrl: 'game.html',
@@ -45,6 +48,8 @@ export class GamePage {
     this.title = TITLES.find(title => title.seriesId == this.gameService.game.seriesId && title.id == this.gameService.game.titleId);
 
     this.showContent();
+
+    <any>gtag('View', 'Game', { 'event_label' : this.series.name + ' - ' + this.title.name });
   }
 
   showContent() {

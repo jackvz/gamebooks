@@ -1,4 +1,4 @@
-// Angular and Ionic components
+// Angular, Ionic and other 3rd party components
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';

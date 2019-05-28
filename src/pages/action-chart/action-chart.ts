@@ -10,6 +10,9 @@ import { TITLES } from '../../app/title-data';
 import { GameService } from '../../app/game.service';
 // import { TitleService } from '../../app/title.service';
 
+// Global vars
+declare var gtag: any;
+
 @Component({
   selector: 'page-action-chart',
   templateUrl: 'action-chart.html',
@@ -40,7 +43,7 @@ export class ActionChartPage {
     // private titleService: TitleService,
     // private sanitizer: DomSanitizer,
     /* tslint:disable-next-line */
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     this.LoneWolf_KaiForm = formBuilder.group({
       combatSkill: [this.gameService.game.playerChart.combatSkill],
@@ -300,6 +303,8 @@ export class ActionChartPage {
     this.FreewayWarriorForm.valueChanges.subscribe(chart => {
       this.gameService.game.playerChart = chart;
     });
+
+    <any>gtag('View', 'Action Chart', { 'event_label' : this.series.name + ' - ' + this.title.name });
   }
 
   ngAfterViewInit() {

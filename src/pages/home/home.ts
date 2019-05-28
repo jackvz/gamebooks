@@ -10,6 +10,9 @@ import { TitleService } from '../../app/title.service';
 import { Game } from '../../app/game';
 import { GameService } from '../../app/game.service';
 
+// Global vars
+declare var gtag: any;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -40,6 +43,8 @@ export class HomePage {
     this.gameService.getSavedGames().then((savedGames) => {
       this.savedGames = <Array<Game>>savedGames;
     });
+
+    <any>gtag('View', 'Home');
   }
 
   ngAfterViewInit() {

@@ -10,6 +10,9 @@ import { Title } from '../../app/title';
 import { GameService } from '../../app/game.service';
 import { TitleService } from '../../app/title.service';
 
+// Global vars
+declare var gtag: any;
+
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html'
@@ -24,7 +27,7 @@ export class MapPage {
     private router: Router,
     private gameService: GameService,
     private titleService: TitleService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {
   }
 
@@ -51,6 +54,8 @@ export class MapPage {
       }).catch(() => {
         this.router.navigateByUrl('/home');
       });
+
+    <any>gtag('View', 'Map', { 'event_label' : this.series.name + ' - ' + this.title.name });
   }
 
   ngAfterViewInit() {
