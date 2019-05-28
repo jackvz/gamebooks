@@ -50,6 +50,8 @@ export class GamePage {
   showContent() {
     this.displayPrev = false;
     this.displayNext = false;
+    this.pageMarkedUpContent = 'Loading...';
+    this.choices = new Array<Choice>();
     this.titleService.getTitle(this.gameService.game.seriesId, this.gameService.game.titleId)
       .then((title) => {
         if (title && (<Title>title).xml) {

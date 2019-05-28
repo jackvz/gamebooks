@@ -91,8 +91,8 @@
         <preference name="SplashScreen" value="resources/splash.png" />
         <preference name="SplashScreenWidth" value="2732" />
         <preference name="SplashScreenHeight" value="2732" />
-        <hook src="scripts/afterElectronBuild.js" type="after_run" />
-        <hook src="scripts/afterElectronBuild.js" type="after_build" />
+        <hook src="scripts/afterBrowserBuild.js" type="after_run" />
+        <hook src="scripts/afterBrowserBuild.js" type="after_build" />
     </platform>
     <engine name="browser" spec="6.0.0" />
     <engine name="android" spec="8.0.0" />

@@ -32,6 +32,10 @@ import { GlobalErrorHandler } from './error-handler';
     FormsModule,
     IonicModule.forRoot(Gamebooks),
     IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: 'Gamebooks',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
     AppRoutingModule,
     HttpClientModule,
     PipesModule,

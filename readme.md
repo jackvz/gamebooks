@@ -4,13 +4,14 @@ Web, desktop and mobile apps for the [1980s game books by Joe Dever](https://www
 
 ## Built with
 
-[Angular](https://angular.io/)
-[Ionic](https://ionicframework.com/)
-[Electron](https://electronjs.org/)
+-[Angular](https://angular.io/)
+-[Ionic](https://ionicframework.com/)
+-[Electron](https://electronjs.org/)
 
 ## Showcase
 
-[iOS](https://appetize.io/app/w7ee7nz5c3q9mkt74heb0z1dt0)
+[Web](https://gamebooks.indecorous.tk/)
+[iOS](https://appetize.io/app/werwec58ucefe444qep3r6hxu0)
 
 ## Setup
 

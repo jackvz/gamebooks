@@ -80,12 +80,10 @@
                         <div class="float-right">
                           <ng-container [ngSwitch]="true">
                             <input type="button" class="secondary button" disabled value="Downloading..." *ngSwitchCase="isTitleDownloading(seriesItem.id, title.id)"/>
-                            <!-- <input type="button" class="secondary button" disabled value="Downloaded" *ngSwitchCase="isTitleDownloaded(seriesItem.id, title.id)"/> -->
-                            <input type="button" class="button" (click)="selectTitle(seriesItem.id, title.id)" value="Play This Title" *ngSwitchCase="isTitleDownloaded(seriesItem.id, title.id)"/>
+                            <input type="button" class="secondary button" disabled value="Downloaded" *ngSwitchCase="isTitleDownloaded(seriesItem.id, title.id)"/>
                             <input type="button" class="secondary button" (click)="downloadTitle(seriesItem.id, title.id)" value="Download This Title" *ngSwitchDefault/>
                           </ng-container>
-                          <!-- @note: Could play this while connected to the network, but to avoid confusion, only allow playing titles after download -->
-                          <!-- <input type="button" class="button" (click)="selectTitle(seriesItem.id, title.id)" value="Play This Title"/> -->
+                          <input type="button" class="button" (click)="selectTitle(seriesItem.id, title.id)" value="Play This Title"/>
                         </div>
                       </div>
                     </div>
