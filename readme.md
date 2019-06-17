@@ -11,7 +11,7 @@ Web, desktop and mobile apps for the [1980s game books by Joe Dever](https://www
 ## Showcase
 
 - [Web](https://gamebooks.indecorous.tk/)
-- [iOS](https://appetize.io/app/j82pb1q5wjq7yufm2dmrv1ntp8)
+- [iOS](https://appetize.io/app/g9cbzzmjy7vuj4ugtu0z70hxkr)
 
 ## Setup
 
