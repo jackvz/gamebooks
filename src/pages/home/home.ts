@@ -187,4 +187,13 @@ export class HomePage {
     this.gameService.game = game;
     this.router.navigateByUrl('/game');
   }
+
+  clearDownloadedContent(): void {
+    this.gameService.clearStorage().then(() => {
+      this.downloadingSeries = new Array<String>();
+      this.downloadingTitles = new Array<String>();
+      this.gameService.loadedTitles = new Array<String>();
+      (<any>$('#content-cleared-popup')).foundation('open');
+    });
+  }
 }

@@ -1,14 +1,15 @@
 // Angular and Ionic components
 import { Component } from '@angular/core';
-// import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // App components
 import { SERIES, SERIES_OPTION } from '../../app/series-data';
 import { TITLES } from '../../app/title-data';
-// import { Title } from '../../app/title';
+import { Title } from '../../app/title';
 import { GameService } from '../../app/game.service';
-// import { TitleService } from '../../app/title.service';
+import { TitleService } from '../../app/title.service';
 
 // Global vars
 declare var gtag: any;
@@ -20,9 +21,12 @@ declare var gtag: any;
 export class ActionChartPage {
   public series;
   public title;
+  public pageMarkedUpContent;
   public titleData;
   public playerChart;
   public seriesOption;
+
+  public showOriginalArtwork = false;
 
   public LoneWolf_KaiForm = new FormGroup({});
   public LoneWolf_MagnaKaiForm = new FormGroup({});
@@ -39,9 +43,10 @@ export class ActionChartPage {
   get f6() { return this.FreewayWarriorForm.controls; }
 
   constructor(
+    private router: Router,
     private gameService: GameService,
-    // private titleService: TitleService,
-    // private sanitizer: DomSanitizer,
+    private titleService: TitleService,
+    private sanitizer: DomSanitizer,
     /* tslint:disable-next-line */
     private formBuilder: FormBuilder,
   ) {
@@ -304,10 +309,31 @@ export class ActionChartPage {
       this.gameService.game.playerChart = chart;
     });
 
+    this.titleService.getTitle(this.gameService.game.seriesId, this.gameService.game.titleId)
+      .then((title) => {
+        if (title && (<Title>title).xml) {
+          var contentXhtml = (
+            <HTMLDivElement>document.evaluate(
+              '//div[@class="frontmatter"][./h2/a[@name="action"]]',
+              (<Title>title).xml, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null
+              ).singleNodeValue
+            ).innerHTML;
+          this.gameService.processXhtml(this.title, contentXhtml).then((processedMarkup) => {
+            this.pageMarkedUpContent = this.sanitizer.bypassSecurityTrustHtml(<string>processedMarkup);
+          });
+        }
+      }).catch(() => {
+        this.router.navigateByUrl('/home');
+      });
+
     <any>gtag('View', 'Action Chart', { 'event_label' : this.series.name + ' - ' + this.title.name });
   }
 
   ngAfterViewInit() {
     $('ion-content .scroll-content').scrollTop(0);
+  }
+
+  toggleShowOriginalArtwork(): void {
+    this.showOriginalArtwork = !this.showOriginalArtwork;
   }
 }

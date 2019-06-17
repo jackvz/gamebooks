@@ -25,7 +25,6 @@ export class GamePage {
   public pageMarkedUpContent;
   public choices: Choice[] = new Array<Choice>();
 
-  public frontMatterPos: number = 0;
   private frontMatterCount: number = 0;
   public displayPrev: boolean = false;
   public displayNext: boolean = false;
@@ -41,8 +40,6 @@ export class GamePage {
   ngOnInit() {
     this.gameService.checkAgreed();
     this.gameService.checkSeriesAndTitleSelected();
-
-    this.frontMatterPos == this.frontMatterPos;
 
     this.series = SERIES.find(seriesItem => seriesItem.id == this.gameService.game.seriesId);
     this.title = TITLES.find(title => title.seriesId == this.gameService.game.seriesId && title.id == this.gameService.game.titleId);
@@ -62,12 +59,13 @@ export class GamePage {
         if (title && (<Title>title).xml) {
           // Front matter...
           if (this.gameService.game.sectionNr == 0) {
-            if (!this.frontMatterPos || this.frontMatterPos == 0) {
-              this.frontMatterPos = 1;
+            if (!this.gameService.game.frontMatterPos || this.gameService.game.frontMatterPos == 0) {
+              this.gameService.game.frontMatterPos = 2; // Skip 1 "Table of Contents"
             }
+            // var frontMatterCount = document.evaluate('count(//div[@class="numbered"]/preceding-sibling::div[@class="frontmatter"][not(.//h2[text()="Table of Contents"])])', (<Title>title).xml, null, XPathResult.ANY_TYPE, null);
             var frontMatterCount = document.evaluate('count(//div[@class="numbered"]/preceding-sibling::div[@class="frontmatter"])', (<Title>title).xml, null, XPathResult.ANY_TYPE, null);
             this.frontMatterCount = frontMatterCount.numberValue;
-            if (this.frontMatterPos > 1) {
+            if (this.gameService.game.frontMatterPos > 2) { // Skip 1 "Table of Contents"
               this.displayPrev = true;
             }
             this.displayNext = true;
@@ -76,12 +74,15 @@ export class GamePage {
             var frontMatterCounter = 0;
             while (frontMatterItem) {
               frontMatterCounter++;
-              if (this.frontMatterPos == frontMatterCounter) {
-                this.gameService.processXhtml(this.title, (<HTMLDivElement>frontMatterItem).innerHTML).then((processedMarkup) => {
-                  this.pageMarkedUpContent = this.sanitizer.bypassSecurityTrustHtml(<string>processedMarkup);
-                });
-              }
-              frontMatterItem = frontMatterItems.iterateNext();
+              // var isTOC = (<HTMLDivElement>frontMatterItem).innerHTML.includes('<h2>Table of Contents</h2>');
+              // if (!isTOC) {
+                if (this.gameService.game.frontMatterPos == frontMatterCounter) {
+                  this.gameService.processXhtml(this.title, (<HTMLDivElement>frontMatterItem).innerHTML).then((processedMarkup) => {
+                    this.pageMarkedUpContent = this.sanitizer.bypassSecurityTrustHtml(<string>processedMarkup);
+                  });
+                }
+                frontMatterItem = frontMatterItems.iterateNext();
+              // }
             }
           // Or numbered section...
           } else {
@@ -103,7 +104,6 @@ export class GamePage {
               }
               var nextSectionNr = this.gameService.game.sectionNr;
               nextSectionNr++;
-              console.log('curr & next sect nr', this.gameService.game.sectionNr, nextSectionNr);
               if (contentNodeXhtml.includes('name="sect' + nextSectionNr + '"')) {
                 sectionXhtmlStarted = false;
               }
@@ -135,8 +135,8 @@ export class GamePage {
   }
 
   next(): void {
-    if (this.frontMatterPos < this.frontMatterCount) {
-      this.frontMatterPos++;
+    if (this.gameService.game.frontMatterPos < this.frontMatterCount) {
+      this.gameService.game.frontMatterPos++;
       this.showContent();
     } else {
       this.gameService.game.sectionNr = 1;
@@ -145,7 +145,7 @@ export class GamePage {
   }
 
   prev(): void {
-    this.frontMatterPos--;
+    this.gameService.game.frontMatterPos--;
     this.showContent();
   }
 

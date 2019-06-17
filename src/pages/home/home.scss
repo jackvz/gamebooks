@@ -15,4 +15,16 @@ page-home {
   .title-header h5 {
     margin-bottom: 0;
   }
+
+  .title-blurb {
+    cite {
+      display: inline;
+    }
+  }
+
+  .platform-ios, .platform-android {
+    .help {
+      display: none;
+    }
+  }
 }

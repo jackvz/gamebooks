@@ -27,7 +27,7 @@ npm install
 
 ## Run
 
-Dev:
+Development:
 ```shell
 npm run start --livereload
 ```
@@ -39,12 +39,12 @@ ionic cordova run browser
 
 iOS:
 ```shell
-ionic cordova run ios --livereload
+ionic cordova run ios
 ```
 
 Android:
 ```shell
-ionic cordova run android --livereload
+ionic cordova run android
 ```
 
 Desktop:

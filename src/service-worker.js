@@ -13,6 +13,7 @@ self.toolbox.options.cache = {
 // pre-cache our key assets
 self.toolbox.precache(
   [
+    './assets/icon/favicon.ico',
     './assets/js/jquery.js',
     './assets/js/what-input.js',
     './assets/js/foundation.min.js',

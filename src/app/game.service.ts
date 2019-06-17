@@ -185,4 +185,13 @@ export class GameService {
     });
     return promise;
   }
+
+  clearStorage() {
+    var promise = new Promise((resolve, reject) => {
+      this.storage.clear().then(() => {
+        resolve();
+      });
+    });
+    return promise;
+  }
 }

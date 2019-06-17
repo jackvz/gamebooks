@@ -76,6 +76,7 @@
                   <li *ngFor="let title of titles | titleFilter : seriesItem.id" class="accordion-item" data-accordion-item>
                     <a href="#" class="accordion-title title-header" (click)="activateTitle(seriesItem.id, title.id)"><h5>{{title.name}}</h5></a>
                     <div class="accordion-content" data-tab-content>
+                      <small [innerHTML]="title.blurb" class="title-blurb"></small>
                       <div class="clearfix">
                         <div class="float-right">
                           <ng-container [ngSwitch]="true">
@@ -94,6 +95,22 @@
           </div>
         </li>
 
+        <li [style.display]="this.gameService.loadedTitles.length ? '' : 'none'" data-accordion-item class="accordion-item help">
+          <a href="#" class="accordion-title"><h3>Help</h3></a>
+          <div class="accordion-content" data-tab-content>
+            <div class="grid-x grid-padding-x">
+              <div class="medium-10 medium-offset-1 cell">
+                <p>Your browser may decide to clear out downloaded content in low disk-space situations. If that happens and things stop working, you can clear all stored content here.</p>
+              </div>
+            </div>
+            <div class="grid-x grid-padding-x">
+              <div class="medium-4 medium-offset-4 cell">
+                <div><a class="button save-button" (click)="clearDownloadedContent()">Clear Downloaded Content</a></div>
+              </div>
+            </div>
+          </div>
+        </li>
+
       </ul>
     </div>
 
@@ -103,6 +120,13 @@
 <div class="reveal" id="disconnected-popup" data-reveal>
   <h1>Not connected</h1>
   <p>No network connectivity</p>
+  <button class="close-button" data-close aria-label="Close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="content-cleared-popup" data-reveal>
+  <h1>Downloaded Content Cleared Successfully</h1>
   <button class="close-button" data-close aria-label="Close" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
