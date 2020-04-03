@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="life.indecorous.gamebooks" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="online.indecorous.gamebooks" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Gamebooks</name>
     <description>UI for the 1980s game books by Joe Dever</description>
-    <author email="jackvanzyl@icloud.com" href="https://www.indecorous.tk/">Indecorous Digital</author>
+    <author email="jackvanzyl@icloud.com" href="https://www.indecorous.online/">Indecorous Digital</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
