@@ -1,0 +1,1170 @@
+<div class="grid-container series-{{series?.id}}">
+  <title-header [series]=this.series [title]=this.title class="grid-x grid-padding-x pa-header"></title-header>
+
+  <game-menu selected="action-chart"></game-menu>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-10 medium-offset-1 cell">
+      <input *ngIf="!showOriginalArtwork" type="button" class="button float-right medium-offset-right-1" (click)="toggleShowOriginalArtwork()" value="Show original action chart artwork"/>
+      <input *ngIf="showOriginalArtwork" type="button" class="button float-right medium-offset-right-1" (click)="toggleShowOriginalArtwork()" value="Show editable action chart"/>
+      <div [innerHTML]="pageMarkedUpContent" [class.hide]="!showOriginalArtwork"></div>
+
+      <div [class.hide]="showOriginalArtwork">
+        <h2>Action Chart</h2>
+
+        <!-- ============================== -->
+        <!-- Series: Lone Wolf Kai -->
+
+        <form [formGroup]="LoneWolf_KaiForm" *ngIf="series?.id == seriesOption.LoneWolf_Kai">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 medium-order-1 small-order-2 cell">
+              <h6>Combat Skill and Endurance</h6>
+              <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                  <small>Combat Skill</small>
+                  <input formControlName="combatSkill" name="combat-skill" type="text" />
+                </div>
+                <div class="medium-6 cell">
+                  <small>Endurance Points</small>
+                  <input formControlName="endurancePoints" name="endurance-points" type="text" />
+                  <label>Can never go above initial score.<br>0 = Dead</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6>Kai Rank</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <select formControlName="rank" name="rank">
+                <option>Novice</option>
+                <option>Intuit</option>
+                <option>Doan</option>
+                <option>Acolyte</option>
+                <option selected>Initiate</option>
+                <option>Aspirant</option>
+                <option>Guardian</option>
+                <option>Warmarn or Journeyman</option>
+                <option>Savant</option>
+              </select>
+            </div>
+          </div>
+
+          <h6>Kai Disciplines</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-10 cell">
+              <small>Novice</small>
+              <input type="text" formControlName="discipline1" name="discipline1" placeholder="1st Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Intuit</small>
+              <input type="text" formControlName="discipline2" name="discipline2" placeholder="2nd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Doan</small>
+              <input type="text" formControlName="discipline3" name="discipline3" placeholder="3rd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Acolyte</small>
+              <input type="text" formControlName="discipline4" name="discipline4" placeholder="4th Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Initiate</small>
+              <input type="text" formControlName="discipline5" name="discipline5" placeholder="5th Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Aspirant</small>
+              <input type="text" formControlName="discipline6" name="discipline6" placeholder="6th Discipline if you've completed one Lone Wolf adventure successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Guardian</small>
+              <input type="text" formControlName="discipline7" name="discipline7" placeholder="7th Discipline if you've completed two Lone Wolf adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Warmarn or Journeyman</small>
+              <input type="text" formControlName="discipline8" name="discipline8" placeholder="8th Discipline if you've completed three Lone Wolf adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Savant</small>
+              <input type="text" formControlName="discipline9" name="discipline9" placeholder="9th Discipline if you've completed four Lone Wolf adventures successfully" />
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Weapons</h6>
+              <input type="text" formControlName="weapon1" name="weapon1" placeholder="1st Weapon" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="weapon2" name="weapon2" placeholder="2nd Weapon" />
+            </div>
+            <div class="medium 8 cell">
+              <label>If holding Weapon and appropriate Weaponskill in combat +2CS.</label>
+              <label>If Combat entered carrying no Weapon -4CS.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Belt Pouch</h6>
+              <input type="text" formControlName="beltPouch" name="belt-pouch" />
+              <label>Holds Gold Crowns (50 Maximum)</label>
+              <label *ngIf="f1.beltPouch.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6>Meals</h6>
+              <input type="text" formControlName="meals" name="meals" />
+              <label>-3EP if no Meal available when instructed to eat.</label>
+              <label *ngIf="f1.meals.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Backpack</h6>
+              <input type="text" formControlName="backpackItem1" name="backpack-item1" placeholder="1st Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem2" name="backpack-item2" placeholder="2nd Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem3" name="backpack-item3" placeholder="3rd Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem4" name="backpack-item4" placeholder="4th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem5" name="backpack-item5" placeholder="5th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem6" name="backpack-item6" placeholder="6th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem7" name="backpack-item7" placeholder="7th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem8" name="backpack-item8" placeholder="8th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 cell">
+              <label>Can be discarded when not in combat.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Special Items</h6>
+              <textarea formControlName="specialItems" name="special-items" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Notes</h6>
+              <textarea formControlName="notes" name="notes" rows="5"></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- ============================== -->
+        <!-- Series: Lone Wolf Magnakai -->
+
+         <form [formGroup]="LoneWolf_MagnaKaiForm" *ngIf="series?.id == seriesOption.LoneWolf_MagnaKai">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 medium-order-1 small-order-2 cell">
+              <h6>Combat Skill and Endurance</h6>
+              <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                  <small>Combat Skill</small>
+                  <input formControlName="combatSkill" name="combat-skill" type="text" />
+                </div>
+                <div class="medium-6 cell">
+                  <small>Endurance Points</small>
+                  <input formControlName="endurancePoints" name="endurance-points" type="text" />
+                  <label>Can never go above initial score.<br>0 = Dead</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6>Magnakai Rank</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <select formControlName="rank" name="rank">
+                <option>Kai Master</option>
+                <option>Kai Master Senior</option>
+                <option selected>Kai Master Superior</option>
+                <option>Primate</option>
+                <option>Tutelary</option>
+                <option>Principalin</option>
+                <option>Mentora</option>
+                <option>Scion-kai</option>
+                <option>Archmaster</option>
+              </select>
+            </div>
+          </div>
+
+          <h6>Magnakai Disciplines</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-10 cell">
+              <small>Kai Master</small>
+              <input type="text" formControlName="discipline1" name="discipline1" placeholder="1st Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Master Senior</small>
+              <input type="text" formControlName="discipline2" name="discipline2" placeholder="2nd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Master Superior</small>
+              <input type="text" formControlName="discipline3" name="discipline3" placeholder="3rd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Primate</small>
+              <input type="text" formControlName="discipline4" name="discipline4" placeholder="4th Discipline if you've completed one Magnakai adventure successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Tutelary</small>
+              <input type="text" formControlName="discipline5" name="discipline5" placeholder="5th Discipline if you've completed two Magnakai adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Principalin</small>
+              <input type="text" formControlName="discipline6" name="discipline6" placeholder="6th Discipline if you've completed three Magnakai adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Mentora</small>
+              <input type="text" formControlName="discipline7" name="discipline7" placeholder="7th Discipline if you've completed four Magnakai adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Scion-kai</small>
+              <input type="text" formControlName="discipline8" name="discipline8" placeholder="8th Discipline if you've completed five Magnakai adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Archmaster</small>
+              <input type="text" formControlName="discipline9" name="discipline9" placeholder="9th Discipline if you've completed six Magnakai adventures successfully" />
+            </div>
+          </div>
+
+          <h6>Weaponmastery Checklist</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input formControlName="weaponMasteryDagger" name="weaponMasteryDagger" type="checkbox"><label>Dagger</label><br/>
+              <input formControlName="weaponMasteryMace" name="weaponMasteryMace" type="checkbox"><label>Mace</label><br/>
+              <input formControlName="weaponMasteryWarhammer" name="weaponMasteryWarhammer" type="checkbox"><label>Warhammer</label><br/>
+              <input formControlName="weaponMasteryAxe" name="weaponMasteryAxe" type="checkbox"><label>Axe</label><br/>
+              <input formControlName="weaponMasteryQuarterstaff" name="weaponMasteryQuarterstaff" type="checkbox"><label>Quarterstaff</label><br/>
+            </div>
+            <div class="medium-4 cell">
+              <input formControlName="weaponMasterySpear" name="weaponMasterySpear" type="checkbox"><label>Spear</label><br/>
+              <input formControlName="weaponMasteryShortSword" name="weaponMasteryShortSword" type="checkbox"><label>Short Sword</label><br/>
+              <input formControlName="weaponMasteryBow" name="weaponMasteryBow" type="checkbox"><label>Bow</label><br/>
+              <input formControlName="weaponMasterySword" name="weaponMasterySword" type="checkbox"><label>Sword</label><br/>
+              <input formControlName="weaponMasteryBroadsword" name="weaponMasteryBroadsword" type="checkbox"><label>Broadsword</label><br/>
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Weapons</h6>
+              <input type="text" formControlName="weapon1" name="weapon1" placeholder="1st Weapon" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="weapon2" name="weapon2" placeholder="2nd Weapon" />
+            </div>
+            <div class="medium 8 cell">
+              <label>If holding Weapon and appropriate Weaponmastery in combat +3CS.</label>
+              <label>If Combat entered carrying no Weapon -4CS.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Belt Pouch</h6>
+              <input type="text" formControlName="beltPouch" name="beltPouch" />
+              <label>Holds Gold Crowns (50 Maximum)</label>
+              <label *ngIf="f2.beltPouch.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6>Meals</h6>
+              <input type="text" formControlName="meals" name="meals" />
+              <label>-3EP if no Meal available when instructed to eat.</label>
+              <label *ngIf="f2.meals.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6 class=quiver>Quiver</h6><input type="checkbox" formControlName="hasQuiver" name="hasQuiver" class="quiver-check">
+              <input type="text" formControlName="arrows" name="arrows" />
+              <label *ngIf="f2.arrows.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Backpack</h6>
+              <input type="text" formControlName="backpackItem1" name="backpack-item1" placeholder="1st Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem2" name="backpack-item2" placeholder="2nd Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem3" name="backpack-item3" placeholder="3rd Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem4" name="backpack-item4" placeholder="4th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem5" name="backpack-item5" placeholder="5th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem6" name="backpack-item6" placeholder="6th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem7" name="backpack-item7" placeholder="7th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem8" name="backpack-item8" placeholder="8th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 cell">
+              <label>Can be discarded when not in combat.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Special Items</h6>
+              <textarea formControlName="specialItems" name="specialItems" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Notes</h6>
+              <textarea formControlName="notes" name="notes" rows="5"></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- ============================== -->
+        <!-- Series: Lone Wolf Grand Master -->
+
+        <form [formGroup]="LoneWolf_GrandMasterForm" *ngIf="series?.id == seriesOption.LoneWolf_GrandMaster">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 medium-order-1 small-order-2 cell">
+              <h6>Combat Skill and Endurance</h6>
+              <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                  <small>Combat Skill</small>
+                  <input formControlName="combatSkill" name="combat-skill" type="text" />
+                </div>
+                <div class="medium-6 cell">
+                  <small>Endurance Points</small>
+                  <input formControlName="endurancePoints" name="endurance-points" type="text" />
+                  <label>Can never go above initial score.<br>0 = Dead</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6>Grand Master Rank</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <select formControlName="rank" name="rank">
+                <option>Kai Grand Master Senior</option>
+                <option>Kai Grand Master Superior</option>
+                <option>Kai Grand Sentinel</option>
+                <option selected>Kai Grand Defender</option>
+                <option>Kai Grand Guardian</option>
+                <option>Sun Knight</option>
+                <option>Sun Lord</option>
+                <option>Sun Thane</option>
+                <option>Grand Thane</option>
+                <option>Grand Crown</option>
+                <option>Sun Prince</option>
+              </select>
+            </div>
+          </div>
+
+          <h6>Grand Master Disciplines</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-10 cell">
+              <small>Kai Grand Master Senior</small>
+              <input type="text" formControlName="discipline1" name="discipline1" placeholder="1st Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Master Superior</small>
+              <input type="text" formControlName="discipline2" name="discipline2" placeholder="2nd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Sentinel</small>
+              <input type="text" formControlName="discipline3" name="discipline3" placeholder="3rd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Defender</small>
+              <input type="text" formControlName="discipline4" name="discipline4" placeholder="4th Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Guardian</small>
+              <input type="text" formControlName="discipline5" name="discipline5" placeholder="5th Discipline if you've completed one Grand Master adventure successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Sun Knight</small>
+              <input type="text" formControlName="discipline6" name="discipline6" placeholder="6th Discipline if you've completed two Grand Master adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Sun Lord</small>
+              <input type="text" formControlName="discipline7" name="discipline7" placeholder="7th Discipline if you've completed three Grand Master adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Sun Thane</small>
+              <input type="text" formControlName="discipline8" name="discipline8" placeholder="8th Discipline if you've completed four Grand Master adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Grand Thane</small>
+              <input type="text" formControlName="discipline9" name="discipline9" placeholder="9th Discipline if you've completed five Grand Master adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Grand Crown</small>
+              <input type="text" formControlName="discipline10" name="discipline10" placeholder="10th Discipline if you've completed six Grand Master adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Sun Prince</small>
+              <input type="text" formControlName="discipline11" name="discipline11" placeholder="11th Discipline if you've completed seven Grand Master adventures successfully" />
+            </div>
+          </div>
+
+          <h6>Grand Weaponmastery Checklist</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input formControlName="weaponMasteryDagger" name="weaponMasteryDagger" type="checkbox"><label>Dagger</label><br/>
+              <input formControlName="weaponMasteryMace" name="weaponMasteryMace" type="checkbox"><label>Mace</label><br/>
+              <input formControlName="weaponMasteryWarhammer" name="weaponMasteryWarhammer" type="checkbox"><label>Warhammer</label><br/>
+              <input formControlName="weaponMasteryAxe" name="weaponMasteryAxe" type="checkbox"><label>Axe</label><br/>
+              <input formControlName="weaponMasteryQuarterstaff" name="weaponMasteryQuarterstaff" type="checkbox"><label>Quarterstaff</label><br/>
+            </div>
+            <div class="medium-4 cell">
+              <input formControlName="weaponMasterySpear" name="weaponMasterySpear" type="checkbox"><label>Spear</label><br/>
+              <input formControlName="weaponMasteryShortSword" name="weaponMasteryShortSword" type="checkbox"><label>Short Sword</label><br/>
+              <input formControlName="weaponMasteryBow" name="weaponMasteryBow" type="checkbox"><label>Bow</label><br/>
+              <input formControlName="weaponMasterySword" name="weaponMasterySword" type="checkbox"><label>Sword</label><br/>
+              <input formControlName="weaponMasteryBroadsword" name="weaponMasteryBroadsword" type="checkbox"><label>Broadsword</label><br/>
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Weapons</h6>
+              <input type="text" formControlName="weapon1" name="weapon1" placeholder="1st Weapon" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="weapon2" name="weapon2" placeholder="2nd Weapon" />
+            </div>
+            <div class="medium 8 cell">
+              <label>If holding Weapon and appropriate Grand Weaponmastery in combat +5CS.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Kai Weapon</h6>
+              <textarea formControlName="kaiWeapon" name="kaiWeapon" rows="3" placeholder="Name, Type and CS Bonus"></textarea>
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <textarea rows="3" placeholder="Unique Properties"></textarea>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Belt Pouch</h6>
+              <input type="text" formControlName="beltPouch" name="beltPouch" />
+              <label>Holds Gold Crowns (50 Maximum)</label>
+              <label *ngIf="f3.beltPouch.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6>Meals</h6>
+              <input type="text" formControlName="meals" name="meals" />
+              <label>-3EP if no Meal available when instructed to eat.</label>
+              <label *ngIf="f3.meals.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6 class=quiver>Quiver</h6><input type="checkbox" formControlName="hasQuiver" name="hasQuiver" class="quiver-check">
+              <input type="text" formControlName="arrows" name="arrows" />
+              <label *ngIf="f3.arrows.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Backpack</h6>
+              <input type="text" formControlName="backpackItem1" name="backpack-item1" placeholder="1st Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem2" name="backpack-item2" placeholder="2nd Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem3" name="backpack-item3" placeholder="3rd Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem4" name="backpack-item4" placeholder="4th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem5" name="backpack-item5" placeholder="5th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem6" name="backpack-item6" placeholder="6th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem7" name="backpack-item7" placeholder="7th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem8" name="backpack-item8" placeholder="8th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem10" name="backpack-item10" placeholder="9th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem10" name="backpack-item10" placeholder="10th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 cell">
+              <label>Can be discarded when not in combat.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Special Items</h6>
+              <textarea formControlName="specialItems" name="specialItems" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Notes</h6>
+              <textarea formControlName="notes" name="notes" rows="5"></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- ============================== -->
+        <!-- Series: Lone Wolf New Order -->
+
+        <form [formGroup]="LoneWolf_NewOrderForm" *ngIf="series?.id == seriesOption.LoneWolf_NewOrder">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 medium-order-1 small-order-2 cell">
+              <h6>Combat Skill and Endurance</h6>
+              <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                  <small>Combat Skill</small>
+                  <input formControlName="combatSkill" name="combat-skill" type="text" />
+                </div>
+                <div class="medium-6 cell">
+                  <small>Endurance Points</small>
+                  <input formControlName="endurancePoints" name="endurance-points" type="text" />
+                  <label>Can never go above initial score.<br>0 = Dead</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6>Grand Master Rank</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <select formControlName="rank" name="rank">
+                <option selected>Kai Grand Master Superior</option>
+                <option>Kai Grand Sentinel</option>
+                <option>Kai Grand Defender</option>
+                <option>Kai Grand Guardian</option>
+                <option>Sun Knight</option>
+                <option>Sun Lord</option>
+                <option>Sun Thane</option>
+                <option>Grand Thane</option>
+              </select>
+            </div>
+          </div>
+
+          <h6>Grand Master Disciplines</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-10 cell">
+              <input type="text" formControlName="discipline1" name="discipline1" placeholder="1st Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="discipline2" name="discipline2" placeholder="2nd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="discipline3" name="discipline3" placeholder="3rd Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="discipline4" name="discipline4" placeholder="4th Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Master Superior</small>
+              <input type="text" formControlName="discipline5" name="discipline5" placeholder="5th Discipline" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Sentinel</small>
+              <input type="text" formControlName="discipline6" name="discipline6" placeholder="6th Discipline if you've completed one New Order adventure successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Defender</small>
+              <input type="text" formControlName="discipline7" name="discipline7" placeholder="7th Discipline if you've completed two New Order adventure successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Kai Grand Guardian</small>
+              <input type="text" formControlName="discipline8" name="discipline8" placeholder="8th Discipline if you've completed three New Order adventure successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Sun Knight</small>
+              <input type="text" formControlName="discipline9" name="discipline9" placeholder="9th Discipline if you've completed four New Order adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Sun Lord</small>
+              <input type="text" formControlName="discipline10" name="discipline10" placeholder="10th Discipline if you've completed five New Order adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Sun Thane</small>
+              <input type="text" formControlName="discipline11" name="discipline11" placeholder="11th Discipline if you've completed six New Order adventures successfully" />
+            </div>
+            <div class="medium-10 cell">
+              <small>Grand Thane</small>
+              <input type="text" formControlName="discipline12" name="discipline12" placeholder="12th Discipline if you've completed seven New Order adventures successfully" />
+            </div>
+          </div>
+
+          <h6>Grand Weaponmastery Checklist</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input formControlName="weaponMasteryDagger" name="weaponMasteryDagger" type="checkbox"><label>Dagger</label><br/>
+              <input formControlName="weaponMasteryMace" name="weaponMasteryMace" type="checkbox"><label>Mace</label><br/>
+              <input formControlName="weaponMasteryWarhammer" name="weaponMasteryWarhammer" type="checkbox"><label>Warhammer</label><br/>
+              <input formControlName="weaponMasteryAxe" name="weaponMasteryAxe" type="checkbox"><label>Axe</label><br/>
+              <input formControlName="weaponMasteryQuarterstaff" name="weaponMasteryQuarterstaff" type="checkbox"><label>Quarterstaff</label><br/>
+            </div>
+            <div class="medium-4 cell">
+              <input formControlName="weaponMasterySpear" name="weaponMasterySpear" type="checkbox"><label>Spear</label><br/>
+              <input formControlName="weaponMasteryShortSword" name="weaponMasteryShortSword" type="checkbox"><label>Short Sword</label><br/>
+              <input formControlName="weaponMasteryBow" name="weaponMasteryBow" type="checkbox"><label>Bow</label><br/>
+              <input formControlName="weaponMasterySword" name="weaponMasterySword" type="checkbox"><label>Sword</label><br/>
+              <input formControlName="weaponMasteryBroadsword" name="weaponMasteryBroadsword" type="checkbox"><label>Broadsword</label><br/>
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Weapons</h6>
+              <input type="text" formControlName="weapon1" name="weapon1" placeholder="1st Weapon" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="weapon2" name="weapon2" placeholder="2nd Weapon" />
+            </div>
+            <div class="medium 8 cell">
+              <label>If holding Weapon and appropriate Grand Weaponmastery in combat +5CS.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Kai Weapon</h6>
+              <textarea formControlName="kaiWeapon" name="kai-weapons" rows="3" placeholder="Name, Type, CS Bonus and Unique Properties"></textarea>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Belt Pouch</h6>
+              <input type="text" formControlName="beltPouch" name="beltPouch" />
+              <label>Holds Gold Crowns (50 Maximum)</label>
+              <label *ngIf="f4.beltPouch.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6>Meals</h6>
+              <input type="text" formControlName="meals" name="meals" />
+              <label>-3EP if no Meal available when instructed to eat.</label>
+              <label *ngIf="f4.meals.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6 class=quiver>Quiver</h6><input type="checkbox" formControlName="hasQuiver" name="hasQuiver" class="quiver-check">
+              <input type="text" formControlName="arrows" name="arrows" />
+              <label *ngIf="f4.arrows.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Backpack</h6>
+              <input type="text" formControlName="backpackItem1" name="backpack-item1" placeholder="1st Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem2" name="backpack-item2" placeholder="2nd Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem3" name="backpack-item3" placeholder="3rd Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem4" name="backpack-item4" placeholder="4th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem5" name="backpack-item5" placeholder="5th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem6" name="backpack-item6" placeholder="6th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem7" name="backpack-item7" placeholder="7th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem8" name="backpack-item8" placeholder="8th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem10" name="backpack-item10" placeholder="9th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem10" name="backpack-item10" placeholder="10th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 cell">
+              <label>Can be discarded when not in combat.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Special Items</h6>
+              <textarea formControlName="specialItems" name="specialItems" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Notes</h6>
+              <textarea formControlName="notes" name="notes" rows="5"></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- ============================== -->
+        <!-- Series: Grey Star -->
+
+        <form [formGroup]="GreyStarForm" *ngIf="series?.id == seriesOption.GreyStar">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 medium-order-1 small-order-2 cell">
+              <h6>Combat Skill and Endurance</h6>
+              <div class="grid-x grid-padding-x">
+                <div class="medium-4 cell">
+                  <small>Combat Skill</small>
+                  <input formControlName="combatSkill" name="combat-skill" type="text" />
+                </div>
+                <div class="medium-4 cell">
+                  <small>Endurance Points</small>
+                  <input formControlName="endurancePoints" name="endurance-points" type="text" />
+                  <label>Can never go above initial score.<br>0 = Dead</label>
+                </div>
+                <div class="medium-4 cell">
+                  <small>Willpower</small>
+                  <input formControlName="willPower" name="willpower" type="text" />
+                  <label>Can go above initial score.</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6>Lesser Magicks</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-10 cell">
+              <input type="text" formControlName="lesserMagick1" name="lesserMagick1" placeholder="1st Lesser Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="lesserMagick2" name="lesserMagick2" placeholder="2nd Lesser Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="lesserMagick3" name="lesserMagick3" placeholder="3rd Lesser Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="lesserMagick4" name="lesserMagick4" placeholder="4th Lesser Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="lesserMagick5" name="lesserMagick5" placeholder="5th Lesser Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="lesserMagick6" name="lesserMagick6" placeholder="6th Lesser Magick if completed any previous World of Lone Wolf adventures successfully" />
+            </div>
+          </div>
+
+          <h6>Higher Magicks</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-10 cell">
+              <input type="text" formControlName="higherMagick1" name="higherMagick1" placeholder="1st Higher Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="higherMagick2" name="higherMagick2" placeholder="2nd Higher Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="higherMagick3" name="higherMagick3" placeholder="3rd Higher Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="higherMagick4" name="higherMagick4" placeholder="4th Higher Magick" />
+            </div>
+            <div class="medium-10 cell">
+              <input type="text" formControlName="higherMagick5" name="higherMagick5" placeholder="5th Higher Magick if completed any previous World of Lone Wolf adventures successfully" />
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Weapons</h6>
+              <input type="text" formControlName="weapon1" name="weapon1" placeholder="1st Weapon" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="weapon2" name="weapon2" placeholder="2nd Weapon" />
+            </div>
+            <div class="medium 8 cell">
+              <label>Wizard's Staff counts as 1 Weapon.</label>
+              <label>If Combat entered without Wizard's Staff -6CS.</label>
+              <label>If Combat entered without a Weapon -8CS.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Robe Pocket</h6>
+              <input type="text" formControlName="robePocket" name="robePocket" />
+              <label>Holds Nobles</label>
+              <label *ngIf="f5.robePocket.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6>Meals</h6>
+              <input type="text" formControlName="meals" name="meals" />
+              <label>-3EP if no Meal available when instructed to eat.</label>
+              <label *ngIf="f5.meals.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Backpack</h6>
+              <input type="text" formControlName="backpackItem1" name="backpack-item1" placeholder="1st Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem2" name="backpack-item2" placeholder="2nd Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem3" name="backpack-item3" placeholder="3rd Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem4" name="backpack-item4" placeholder="4th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem5" name="backpack-item5" placeholder="5th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem6" name="backpack-item6" placeholder="6th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem7" name="backpack-item7" placeholder="7th Backpack Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem8" name="backpack-item8" placeholder="8th Backpack Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 cell">
+              <label>Can be discarded when not in combat.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Herb Pouch</h6>
+              <input type="text" formControlName="pouchItem1" name="pouchItem1" placeholder="1st Herb Pouch Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="pouchItem2" name="pouchItem2" placeholder="2nd Herb Pouch Item" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="pouchItem3" name="pouchItem3" placeholder="3rd Herb Pouch Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="pouchItem4" name="pouchItem4" placeholder="4th Herb Pouch Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="pouchItem5" name="pouchItem5" placeholder="5th Herb Pouch Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="pouchItem6" name="pouchItem6" placeholder="6th Herb Pouch Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="pouchItem7" name="pouchItem7" placeholder="7th Herb Pouch Item" />
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="pouchItem8" name="pouchItem8" placeholder="8th Herb Pouch Item" />
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 cell">
+              <label>Only carried if you possess Magical Power of Alchemy.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Special Items</h6>
+              <textarea formControlName="specialItems" name="specialItems" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Notes</h6>
+              <textarea formControlName="notes" name="notes" rows="5"></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- ============================== -->
+        <!-- Series: Freeway Warrior -->
+
+        <form [formGroup]="FreewayWarriorForm" *ngIf="series?.id == seriesOption.FreewayWarrior">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-8 medium-order-1 small-order-2 cell">
+              <h6>Combat Skill and Endurance</h6>
+              <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                  <small>Close Combat Skill</small>
+                  <input formControlName="combatSkill" name="combat-skill" type="text" />
+                </div>
+                <div class="medium-6 cell">
+                  <small>Endurance Points</small>
+                  <input formControlName="endurancePoints" name="endurance-points" type="text" />
+                  <label>Can never go above initial score.<br>0 = Dead</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6>Survival Skills</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <small>Driving</small>
+              <input type="text" formControlName="survivalSkillDrivingPoints" name="survivalSkillDrivingPoints" placeholder="Driving Skill Points" />
+              <label *ngIf="f6.survivalSkillDrivingPoints.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <small>Shooting</small>
+              <input type="text" formControlName="survivalSkillShootingPoints" name="survivalSkillShootingPoints" placeholder="Shooting Skill Points" />
+              <label *ngIf="f6.survivalSkillShootingPoints.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <small>Field Craft</small>
+              <input type="text" formControlName="survivalSkillFieldCraftPoints" name="survivalSkillFieldCraftPoints" placeholder="Field Craft Skill Points" />
+              <label *ngIf="f6.survivalSkillFieldCraftPoints.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <small>Stealth</small>
+              <input type="text" formControlName="survivalSkillStealthPoints" name="survivalSkillStealthPoints" placeholder="Stealth Skill Points" />
+              <label *ngIf="f6.survivalSkillStealthPoints.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <small>Perception</small>
+              <input type="text" formControlName="survivalSkillPerceptionPoints" name="survivalSkillPerceptionPoints" placeholder="Perception Skill Points" />
+              <label *ngIf="f6.survivalSkillPerceptionPoints.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Close Combat Weapons</h6>
+              <input type="text" formControlName="weapon1" name="weapon1" placeholder="1st Close Combat Weapon; CCS Bonus" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="weapon2" name="weapon2" placeholder="2nd Close Combat Weapon; CCS Bonus" />
+            </div>
+            <div class="medium 8 cell">
+              <label>If holding Weapon and appropriate Weaponskill in combat +2CS.</label>
+              <label>If Combat entered carrying no Weapon -4CS.</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Missile Weapons</h6>
+              <input type="text" formControlName="missileWeapon1" name="missileWeapon1" placeholder="1st Missile Weapon; Calibre; Rate of Fire" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="missileWeapon2" name="missileWeapon2" placeholder="2nd Missile Weapon; Calibre; Rate of Fire" />
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="missileWeapon3" name="missileWeapon3" placeholder="3rd Missile Weapon; Calibre; Rate of Fire" />
+            </div>
+            <div class="medium 8 cell">
+              <label>2 Missile Weapons - Reduce Stealth by 1.</label>
+              <label>3 Missile Weapons - Reduce Stealth by 2.</label>
+            </div>
+          </div>
+
+          <h6>Ammo Pouch</h6>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <small>9mm</small>
+              <input type="text" formControlName="ammo9mm" name="ammo9mm" placeholder="9mm Ammo" />
+              <label>Maximum Quanity: 40</label>
+              <label *ngIf="f6.ammo9mm.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <small>7.62mm</small>
+              <input type="text" formControlName="ammo7_62mm" name="ammo7_62mm" placeholder="7.62mm Ammo" />
+              <label>Maximum Quanity: 20</label>
+              <label *ngIf="f6.ammo7_62mm.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <small>12 Gauge</small>
+              <input type="text" formControlName="ammo12gauge" name="ammo12gauge" placeholder="12 Gauge Ammo" />
+              <label>Maximum Quanity: 10</label>
+              <label *ngIf="f6.ammo12gauge.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Medi-Kit</h6>
+              <input type="number" formControlName="medKits" name="medKits" />
+              <label>Maximum 12</label>
+              <label *ngIf="f6.medKits.errors" class="warning">
+                This must be a number
+              </label>
+            </div>
+            <div class="medium-4 cell">
+              <h6>Water Canteen</h6>
+              <input type="text" formControlName="waterCanteen" name="waterCanteen" />
+              <label>-Is either Full (2 pints), or contains 1½ pints, 1 pint, or ½ pint</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <h6>Backpack</h6>
+              <input type="text" formControlName="backpackItem1" name="backpack-item1" placeholder="1st Backpack Item" />
+              <label>No encumbrance</label>
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem2" name="backpack-item2" placeholder="2nd Backpack Item" />
+              <label class="show-for-medium"></label>
+            </div>
+            <div class="medium-4 cell">
+              <h6 class="show-for-medium">&nbsp;</h6>
+              <input type="text" formControlName="backpackItem3" name="backpack-item3" placeholder="3rd Backpack Item" />
+              <label class="show-for-medium"></label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem4" name="backpack-item4" placeholder="4th Backpack Item" />
+              <label>Reduce Stealth by 1</label>
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem5" name="backpack-item5" placeholder="5th Backpack Item" />
+              <label class="show-for-medium"></label>
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem6" name="backpack-item6" placeholder="6th Backpack Item" />
+              <label class="show-for-medium"></label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem7" name="backpack-item7" placeholder="7th Backpack Item" />
+              <label>Reduce Stealth by 2</label>
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem8" name="backpack-item8" placeholder="8th Backpack Item" />
+              <label class="show-for-medium"></label>
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem9" name="backpack-item9" placeholder="9th Backpack Item" />
+              <label class="show-for-medium"></label>
+            </div>
+            <div class="medium-4 cell">
+              <input type="text" formControlName="backpackItem10" name="backpack-item10" placeholder="10th Backpack Item" />
+              <label>Reduce Stealth by 3</label>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <h6>Notes</h6>
+              <textarea formControlName="notes" name="notes" rows="5"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
