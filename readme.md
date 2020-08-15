@@ -20,9 +20,10 @@ Web, desktop and mobile apps for the [1980s game books by Joe Dever](https://www
 ### Install dependencies
 
 ```shell
-npm install -g cordova
-npm install -g ionic
-npm install
+npm i -g cordova@8
+npm i -g ionic@4
+npm i -g ios-sim@9
+npm i
 ```
 
 ## Run
@@ -35,6 +36,12 @@ npm run start --livereload
 Browser:
 ```shell
 ionic cordova run browser
+```
+
+iOS Simulator:
+```shell
+ionic cordova emulate ios --list
+ionic cordova emulate ios
 ```
 
 iOS:
